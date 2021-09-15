@@ -7,13 +7,10 @@ This is a quick script to index (or just grab JSON) for youtube videos.
 * [Algolia account](https://algolia.com/signup?utm_source=social&utm_medium=github&utm_campaign=devrel_youtube&utm_id=integrations) with an app ID
 * [YouTube Developers API Key](https://developers.google.com/youtube/v3)
 
-## Deploy immediately on Netlify
-
-Don't want to worry about setup? Use the deploy button below, fill in the Environment variables you need, and use the functions.
+## Quick Deploy
 
 [![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/brob/netlify-youtube-ingest)
 
-## Quick Deploy
 
 Use the "Deploy to Netlify" Button above. It will ask you for some environment variables:
 
