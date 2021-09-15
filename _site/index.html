@@ -13,9 +13,13 @@
     <div class="container">
         <h1>Two serverless functions to help index your YouTube videos</h1>
         <p>You just spawned this site from a Netlify Deploy button. It's meant to give you an easy way to ingest YouTube videos into an Algolia Index. On this page, there's a simple frontend for showing what a search could look like. AFTER you ingest data into your Index.</p>
-        <p>The frontend is built with 11ty and vanilla JS for a quick example.</p>
-        <p>If you're missing videos in search, the index still needs to be created. </p>
-    </div>
+        <p>For full details see the readme on <a href="https://github.com/brob/netlify-youtube-ingest">the repository</a>.</p>
+        <h3>To make your search work:</h3>
+        <ol>
+            <li>Run the function at <code>/.netlify/functions/getYoutubeJson?channelId=<your id>&maxResults=<number of past videos to index>&index=true</code></li>
+            <li>Keep your index fresh by using the IFTTT <a href="https://ifttt.com/youtube/triggers/new_video_by_channel">New Video By Channel Trigger</a> combined with a <a href="https://ifttt.com/maker_webhooks">webhook action</a> that sends the new video URL as an ingredient to the <code>/.netlify/functions/getYoutubeByUrl</code> function.</li>
+        </ol>    
+        </div>
 
     <div class="container">
         <div id="searchbox"></div>
