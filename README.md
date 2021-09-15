@@ -4,7 +4,7 @@ This is a quick script to index (or just grab JSON) for youtube videos.
 
 ## Requirements
 
-* [Algolia account](https://algolia.com/signup?utm_source=social&utm_medium=github&utm_campaign=devrel_youtube&utm_id=integrations) with an app and Index set up
+* [Algolia account](https://algolia.com/signup?utm_source=social&utm_medium=github&utm_campaign=devrel_youtube&utm_id=integrations) with an app ID
 * [YouTube Developers API Key](https://developers.google.com/youtube/v3)
 
 ## Deploy immediately on Netlify
