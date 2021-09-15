@@ -1,0 +1,5 @@
+[template.environment]
+  YOUTUBE_KEY = "Your YouTube API Developer key"
+  ALGOLIA_APP_ID = "The App in Algolia where your index is"
+  ALGOLIA_API_KEY = "The Algolia admin API Key"
+  VIDEO_INDEX = "The Index name (i.e. video_index)"
