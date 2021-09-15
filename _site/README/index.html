@@ -8,6 +8,30 @@
 <h2>Deploy immediately on Netlify</h2>
 <p>Don't want to worry about setup? Use the deploy button below, fill in the Environment variables you need, and use the functions.</p>
 <p><a href="https://app.netlify.com/start/deploy?repository=https://github.com/brob/netlify-youtube-ingest"><img src="https://www.netlify.com/img/deploy/button.svg" alt="Deploy to Netlify"></a></p>
+<h2>Quick Deploy</h2>
+<p>Use the &quot;Deploy to Netlify&quot; Button above. It will ask you for some environment variables:</p>
+<ul>
+<li>YouTube API key</li>
+<li>Algolia App ID</li>
+<li>Algolia Search API key</li>
+<li>Algolia Admin API key (for writing to the index)</li>
+<li>Algolia Index name (if the index doesn't exist, the function will create it)</li>
+</ul>
+<p>After the first deploy, hit the <code>/.netlify/functions/getYoutubeJson</code> endpoint with a <code>channelId</code>, <code>maxResults</code>, and <code>index=true</code> query parameters (detailed below). This will index the most recent <code>n</code> videos for the channel provided (where <code>n</code> is the <code>maxResults</code> value).</p>
+<p>Once indexed, the frontend for this microsite will work (or you can use the index elsewhere).</p>
+<p>To keep the index fresh, you'll want to create a way to index new content. In <a href="https://ifttt.com">IFTTT</a>, you can set up a &quot;<a href="https://ifttt.com/youtube/triggers/new_video_by_channel">New YouTube video by channel</a>&quot; trigger that can fire a webhook action to the <code>/.netlify/functions/getYoutubeByUrl</code> function and provide the new video's URL as the <code>videoUrl</code> parameter with <code>index=true</code>. For every new video, your index will be updated.</p>
+<p>By default, these functions will scrape the following details:</p>
+<ul>
+<li>Title</li>
+<li>Description</li>
+<li>Tags</li>
+<li>Video Id (as objectID)</li>
+<li>Comment Count</li>
+<li>Likes</li>
+<li>Favorites</li>
+<li>Views</li>
+</ul>
+<p>You can use all of this information as ranking and sorting inside your <a href="https://www.algolia.com/dashboard">Algolia dashboard</a> and customize the search results.</p>
 <h2>Installation</h2>
 <p>In your Netlify project, create (or use) your Netlify functions directory. If you don't have one, create a new directory:</p>
 <pre><code class="language-sh">mkdir /netlify/functions
@@ -40,6 +64,10 @@
 <tr>
 <td><code>ALGOLIA_API_KEY</code></td>
 <td>Your Algolia API key. This needs write permissions to write to the index</td>
+</tr>
+<tr>
+<td><code>ALGOLIA_SEARCH_KEY</code></td>
+<td>Your Algolia search-only key to power the frontend</td>
 </tr>
 <tr>
 <td><code>VIDEO_INDEX</code></td>

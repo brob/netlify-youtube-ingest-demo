@@ -13,6 +13,35 @@ Don't want to worry about setup? Use the deploy button below, fill in the Enviro
 
 [![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/brob/netlify-youtube-ingest)
 
+## Quick Deploy
+
+Use the "Deploy to Netlify" Button above. It will ask you for some environment variables:
+
+* YouTube API key
+* Algolia App ID
+* Algolia Search API key
+* Algolia Admin API key (for writing to the index)
+* Algolia Index name (if the index doesn't exist, the function will create it)
+
+After the first deploy, hit the `/.netlify/functions/getYoutubeJson` endpoint with a `channelId`, `maxResults`, and `index=true` query parameters (detailed below). This will index the most recent `n` videos for the channel provided (where `n` is the `maxResults` value).
+
+Once indexed, the frontend for this microsite will work (or you can use the index elsewhere). 
+
+To keep the index fresh, you'll want to create a way to index new content. In [IFTTT](https://ifttt.com), you can set up a "[New YouTube video by channel](https://ifttt.com/youtube/triggers/new_video_by_channel)" trigger that can fire a webhook action to the `/.netlify/functions/getYoutubeByUrl` function and provide the new video's URL as the `videoUrl` parameter with `index=true`. For every new video, your index will be updated.
+
+By default, these functions will scrape the following details:
+
+* Title
+* Description
+* Tags
+* Video Id (as objectID)
+* Comment Count
+* Likes
+* Favorites
+* Views
+
+You can use all of this information as ranking and sorting inside your [Algolia dashboard](https://www.algolia.com/dashboard) and customize the search results.
+
 ## Installation
 
 In your Netlify project, create (or use) your Netlify functions directory. If you don't have one, create a new directory:
@@ -44,6 +73,7 @@ The function requires environment variables to connect to the YouTube API and an
 |`YOUTUBE_KEY`| Your API Key for [the YouTube API](https://developers.google.com/youtube/v3)|
 |`ALGOLIA_APP_ID`| The Algolia app ID |
 |`ALGOLIA_API_KEY`| Your Algolia API key. This needs write permissions to write to the index |
+|`ALGOLIA_SEARCH_KEY`| Your Algolia search-only key to power the frontend |
 |`VIDEO_INDEX`| The Index name where your search index will be stored in Algolia |
  
 ## Usage
