@@ -24,7 +24,11 @@ After the first deploy, hit the `/.netlify/functions/getYoutubeJson` endpoint wi
 
 Once indexed, the frontend for this microsite will work (or you can use the index elsewhere). 
 
+### Set up indexing additional videos with IFTTT
+
 To keep the index fresh, you'll want to create a way to index new content. In [IFTTT](https://ifttt.com), you can set up a "[New YouTube video by channel](https://ifttt.com/youtube/triggers/new_video_by_channel)" trigger that can fire a webhook action to the `/.netlify/functions/getYoutubeByUrl` function and provide the new video's URL as the `videoUrl` parameter with `index=true`. For every new video, your index will be updated.
+
+### Details scraped
 
 By default, these functions will scrape the following details:
 
@@ -37,10 +41,11 @@ By default, these functions will scrape the following details:
 * Favorites
 * Views
 
+### Configuring your Algolia Index for better results
+
 You can use all of this information as ranking and sorting inside your [Algolia dashboard](https://www.algolia.com/dashboard) and customize the search results. By default it will get strong matches around title, but you can configure it to search title, tags, and description (I recommend that order based on my own youtube channel usage).
 
 You can also set up custom ranking based on number of likes, favorites, views, etc. for the most relevant search.
-
 ## Installation
 
 In your Netlify project, create (or use) your Netlify functions directory. If you don't have one, create a new directory:
