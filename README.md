@@ -37,7 +37,9 @@ By default, these functions will scrape the following details:
 * Favorites
 * Views
 
-You can use all of this information as ranking and sorting inside your [Algolia dashboard](https://www.algolia.com/dashboard) and customize the search results.
+You can use all of this information as ranking and sorting inside your [Algolia dashboard](https://www.algolia.com/dashboard) and customize the search results. By default it will get strong matches around title, but you can configure it to search title, tags, and description (I recommend that order based on my own youtube channel usage).
+
+You can also set up custom ranking based on number of likes, favorites, views, etc. for the most relevant search.
 
 ## Installation
 

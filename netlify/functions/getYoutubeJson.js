@@ -32,6 +32,8 @@ const handler = async (event) => {
         thumbnail: snippet.thumbnails.high.url,
         publishDate: snippet.publishedAt,
         likes: statistics.likeCount,
+        favoriteCount: statistics.favoriteCount,
+        viewCount: statistics.viewCount,
         commentCount: statistics.commentCount,
         objectID: video.id,
         tags: snippet.tags
