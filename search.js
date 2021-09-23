@@ -3,7 +3,6 @@ search.addWidgets([
     container: '#searchbox',
     placeholder: 'Search for videos',
   }),
-
   instantsearch.widgets.hits({
     container: '#hits',
     templates: {
